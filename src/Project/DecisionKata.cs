@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 namespace Project;
 
 public class DecisionKata
@@ -26,7 +28,7 @@ public class DecisionKata
             
         return numberPhone;
         
-        // Решение с помощью LinQ
+        // Решение с помощью LinQ  
         //return string.Format("({0}{1}{2}) {3}{4}{5}-{6}{7}{8}{9}",numbers.Select(x=>x.ToString()).ToArray());
     }
     
@@ -35,7 +37,7 @@ public class DecisionKata
     /// </summary>
     /// <param name="listOfItems">Массив объектов</param>
     /// <returns>Массив цифр</returns>
-    public IEnumerable<int> GetIntegersFromList(List<object> listOfItems)
+    public ICollection<int> GetIntegersFromList(List<object> listOfItems)
     {
         List<int> returnCollection = new List<int>();
         for (int i = 0; i < listOfItems.Count; i++)
@@ -53,44 +55,53 @@ public class DecisionKata
     }
 
     /// <summary>
-    /// Из строки нужно каждые две буквы объединить и положить в массив "asdfg"=> 'as' 'df' 'g_'
+    /// Из строки нужно каждые две буквы объединить и положить в массив "asdfg" => 'as' 'df' 'g_'
     /// </summary>
     /// <param name="str">Строка</param>
     /// <returns>Массив строк, состоящих из двух букв</returns>
     public string[] Solution(string str)
     {
+        // В строку для добавления в новый массив сразу записываем первый символ из входящей строки
+        var strToAdd = str[0].ToString();
+        
+        // Счетчик для итерирования по результирующему массиву
+        var countIndex = 0;
+        
+        // Флаг для добавления символов в конец массива
+        var addEnd = false;
+        // Размер результирующего массива
+        
+        var sizeResultArray = 0;
+        
+        // Верно установить размер массива
         if (str.Length % 2 == 0)
-        {
-            string[] returnResult = new string[(str.Length / 2)];
-            int countIndex = 0;
-            for (int i = 0; i < returnResult.Length; i++)
-            {
-                for (int j = countIndex; j < (countIndex+2); j++)
-                {
-                    returnResult[i] += str[j];
-                }
-                countIndex += 2;
-            }
-            
-            return returnResult;
-        }
+            sizeResultArray = str.Length / 2;
         else
         {
-            string[] returnResult = new string[(str.Length / 2)+1];
-            int countIndex = 0;
-            for (int i = 0; i < returnResult.Length-1; i++)
-            {
-                for (int j = countIndex; j < (countIndex+2); j++)
-                {
-                    returnResult[i] += str[j];
-                }
-                countIndex += 2;
-            }
-            returnResult[(str.Length / 2)] += str[str.Length-1];
-            returnResult[(str.Length / 2)] += '_';
-            
-            return returnResult;
+            sizeResultArray = str.Length / 2 + 1;
+            addEnd = true;
         }
+        
+        // Создать результирующий массив
+        string[] returnResult = new string[sizeResultArray];
+        
+        for (int i = 1; i < str.Length; i++)
+        {
+            strToAdd += str[i];
+            if (i % 2 != 0)
+            {
+                returnResult[countIndex] = strToAdd;
+                strToAdd = String.Empty;
+                countIndex++;
+            }
+        }
+        
+        if (addEnd)
+        {
+            returnResult[countIndex] += $"{strToAdd}_";
+        }
+        
+        return returnResult;
     }
 
     /// <summary>
@@ -100,25 +111,12 @@ public class DecisionKata
     /// <returns>True - если валидный, иначе false</returns>
     public bool IsValidIp(string ipAddress)
     {
-        var objects = ipAddress.Split(".");
-        if (objects.Count() != 4)
-        {
-            return false;
-        }
-        
-        foreach (var obj in objects)
-        {
-            if (!int.TryParse(obj, out int numericObject))
-                return false;
+        var ip = new Regex(@"^([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3}$");
 
-            if (numericObject < 0 || numericObject > 255)
-                return false;
-              
-            if (!numericObject.ToString().Equals(obj))
-                return false;
-        }
-          
-        return true;
+        if (ip.IsMatch(ipAddress))
+            return true;
+        else
+            return false;
     }
 }
 
