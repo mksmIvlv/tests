@@ -5,9 +5,22 @@ namespace ProjectBenchmark;
 
 public class DecisionKataBenchmark
 {
-    #region Поле
+    #region Поля
 
+    /// <summary>
+    /// Класс с методами для бенчмарка
+    /// </summary>
     private DecisionKata _decisionKata;
+
+    /// <summary>
+    /// Коллекция для метода GetIntegersFromList
+    /// </summary>
+    private List<object> _getIntegersFromListCollection;
+
+    /// <summary>
+    /// Строка для метода Solution
+    /// </summary>
+    private string _solutionString;
 
     #endregion
 
@@ -16,12 +29,16 @@ public class DecisionKataBenchmark
     public DecisionKataBenchmark()
     {
         _decisionKata = new DecisionKata();
+        GeneratedData();
     }
 
     #endregion
 
-    #region Методы
+    #region Методы бенчмарка
 
+    /// <summary>
+    /// Бенчмарк метода "Создание номера телефона из входящего массива"
+    /// </summary>
     [Benchmark]
     public void CreatePhoneNumberBenchmark()
     {
@@ -30,28 +47,58 @@ public class DecisionKataBenchmark
         _decisionKata.CreatePhoneNumber(array);
     }
     
+    /// <summary>
+    /// Бенчмарк метода "Вытащить из массива только цифры"
+    /// </summary>
     [Benchmark]
     public ICollection<int> GetIntegersFromListBenchmark()
     {
-        var collection = new List<object> { 1, 2, "q", -90, "e", 6, "rrr", 8.7, "t", 0 };
-
-        return _decisionKata.GetIntegersFromList(collection);
+        return _decisionKata.GetIntegersFromList(_getIntegersFromListCollection);
     }
 
+    /// <summary>
+    /// Бенчмарк метода "Из строки нужно каждые две буквы объединить и положить в массив "asdfg" => 'as' 'df' 'g_'"
+    /// </summary>
     [Benchmark]
     public string[] Solution()
     {
-        var str = "магазин";
-
-        return _decisionKata.Solution(str);
+        return _decisionKata.Solution(_solutionString);
     }
 
+    /// <summary>
+    /// Бенчмарк метода "Проверка на валидность IP адреса"
+    /// </summary>
     [Benchmark]
     public bool IsValidIp()
     {
         var ip = "12.34.56.78sf";
 
         return _decisionKata.IsValidIp(ip);
+    }
+
+    #endregion
+    
+    #region Метод генерации данных
+
+    /// <summary>
+    /// Генерация данных для бенчмарков
+    /// </summary>
+    private void GeneratedData()
+    {
+        // Данные для 1 бенчмарка
+        _getIntegersFromListCollection = new List<object>();
+        for (int i = 0; i < 10000; i++)
+        {
+            _getIntegersFromListCollection.Add(i);
+            if (i % 2 == 0)
+                _getIntegersFromListCollection.Add(i.ToString());
+        }
+        
+        // Данные для 2 бенчмарка
+        for (int i = 0; i < 100; i++)
+        {
+            _solutionString += i.ToString();
+        }
     }
 
     #endregion

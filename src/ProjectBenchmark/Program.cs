@@ -2,6 +2,8 @@
 using ProjectBenchmark;
 
 BenchmarkRunner.Run<DecisionKataBenchmark>();
+Console.ReadKey();
 BenchmarkRunner.Run<SearchInCollectionBenchmark>();
+Console.ReadKey();
 BenchmarkRunner.Run<SortingCollectionBenchmark>();
 Console.ReadKey();

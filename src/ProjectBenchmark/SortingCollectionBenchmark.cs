@@ -5,9 +5,22 @@ namespace ProjectBenchmark;
 
 public class SortingCollectionBenchmark
 {
-    #region Поле
+    #region Поля
 
+    /// <summary>
+    /// Класс с методами для бенчмарка
+    /// </summary>
     private SortingCollection _sortingCollection;
+
+    /// <summary>
+    /// Коллекция для метода SortingСhoice
+    /// </summary>
+    private double[] _sortingСhoice;
+
+    /// <summary>
+    /// Коллекция для метода QuickSorting
+    /// </summary>
+    private double[] _quickSorting;
 
     #endregion
 
@@ -16,27 +29,54 @@ public class SortingCollectionBenchmark
     public SortingCollectionBenchmark()
     {
         _sortingCollection = new SortingCollection();
+        GeneratedData();
     }
 
     #endregion
 
-    #region Методы
+    #region Методы бенчмарка
     
+    /// <summary>
+    /// Бенчмарк метода "Сортировка выбором"
+    /// </summary>
     [Benchmark]
     public double[] SortingСhoiceBenchmark()
     {
-        var array = new double[] { 1, 10, -5, 5 };
-
-        return _sortingCollection.SortingСhoice(array);
-
+        return _sortingCollection.SortingСhoice(_sortingСhoice);
     }
     
+    /// <summary>
+    /// Бенчмарк метода "Быстрая сортировка"
+    /// </summary>
     [Benchmark]
     public double[] QuickSortingBenchmark()
     {
-        var array = new double[] { 1, -5.4, 5, 3.9 };
+        return _sortingCollection.QuickSorting(_quickSorting);
+    }
+
+    #endregion
+    
+    #region Метод генерации данных
+
+    /// <summary>
+    /// Генерация данных для бенчмарков
+    /// </summary>
+    private void GeneratedData()
+    {
+        // Данные для 1 бенчмарка
+        Random random = new Random();
+        _sortingСhoice = new double[10000];
+        for (int i = 0; i < 10000; i++)
+        {
+            _sortingСhoice[i] = random.NextDouble();
+        }
         
-        return _sortingCollection.QuickSorting(array);
+        // Данные для 2 бенчмарка
+        _quickSorting = new double[10000];
+        for (int i = 0; i < 10000; i++)
+        {
+            _quickSorting[i] = random.NextDouble();
+        }
     }
 
     #endregion

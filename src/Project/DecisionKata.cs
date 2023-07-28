@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Text.RegularExpressions;
 
 namespace Project;
@@ -51,7 +52,7 @@ public class DecisionKata
         return returnCollection;
         
         // Решение с помощью LinQ    
-        //return listOfItems.OfType<int>();
+        //return listOfItems.OfType<int>().ToList();
     }
 
     /// <summary>
@@ -69,8 +70,8 @@ public class DecisionKata
         
         // Флаг для добавления символов в конец массива
         var addEnd = false;
-        // Размер результирующего массива
         
+        // Размер результирующего массива
         var sizeResultArray = 0;
         
         // Верно установить размер массива
