@@ -122,7 +122,7 @@ public class SearchInCollectionBenchmark
     /// </summary>
     private void GeneratedData()
     {
-        // Данные для 1 бенчмарка
+        // Данные для BinarySearchBenchmark
         Random random = new Random();
         _binarySearchArray = new double[10000];
         for (int i = 0; i < 10000; i++)
@@ -130,28 +130,28 @@ public class SearchInCollectionBenchmark
             _binarySearchArray[i] = random.NextDouble();
         }
 
-        // Данные для 2 бенчмарка
+        // Данные для MaximumNumberInTheArrayBenchmark
         _maximumNumberInTheArray = new int[10000];
         for (int i = 0; i < 1000; i++)
         {
             _maximumNumberInTheArray[i] = random.Next();
         }
 
-        // Данные для 3 бенчмарка
+        // Данные для MinimumNumberInTheArrayBenchmark
         _minimumNumberInTheArray = new int[10000];
         for (int i = 0; i < 1000; i++)
         {
             _minimumNumberInTheArray[i] = random.Next();
         }
 
-        // Данные для 4 бенчмарка
+        // Данные для AverageValueInTheArrayBenchmark
         _averageValueInTheArray = new int[10000];
         for (int i = 0; i < 1000; i++)
         {
             _averageValueInTheArray[i] = random.Next();
         }
 
-        // Данные для 5 бенчмарка
+        // Данные для ProfitableClientBenchmark
         _profitableClient = new int[100][];
         for (int i = 0; i < _profitableClient.Length; i++)
         {
@@ -162,7 +162,7 @@ public class SearchInCollectionBenchmark
             }
         }
 
-        // Данные для 6 бенчмарка
+        // Данные для AvoidJailDueToTaxFraudBenchmark
         _avoidJailDueToTaxFraud = new int[100][];
         for (int i = 0; i < _avoidJailDueToTaxFraud.Length; i++)
         {

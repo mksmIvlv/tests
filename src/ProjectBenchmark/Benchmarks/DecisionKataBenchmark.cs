@@ -60,7 +60,7 @@ public class DecisionKataBenchmark
     /// Бенчмарк метода "Из строки нужно каждые две буквы объединить и положить в массив "asdfg" => 'as' 'df' 'g_'"
     /// </summary>
     [Benchmark]
-    public string[] Solution()
+    public string[] SolutionBenchmark()
     {
         return _decisionKata.Solution(_solutionString);
     }
@@ -69,7 +69,7 @@ public class DecisionKataBenchmark
     /// Бенчмарк метода "Проверка на валидность IP адреса"
     /// </summary>
     [Benchmark]
-    public bool IsValidIp()
+    public bool IsValidIpBenchmark()
     {
         var ip = "12.34.56.78sf";
 
@@ -85,7 +85,7 @@ public class DecisionKataBenchmark
     /// </summary>
     private void GeneratedData()
     {
-        // Данные для 1 бенчмарка
+        // Данные для GetIntegersFromListBenchmark
         _getIntegersFromListCollection = new List<object>();
         for (int i = 0; i < 10000; i++)
         {
@@ -94,7 +94,7 @@ public class DecisionKataBenchmark
                 _getIntegersFromListCollection.Add(i.ToString());
         }
         
-        // Данные для 2 бенчмарка
+        // Данные для SolutionBenchmark
         for (int i = 0; i < 100; i++)
         {
             _solutionString += i.ToString();

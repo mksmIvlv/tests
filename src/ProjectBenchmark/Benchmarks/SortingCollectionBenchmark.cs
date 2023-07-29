@@ -63,7 +63,7 @@ public class SortingCollectionBenchmark
     /// </summary>
     private void GeneratedData()
     {
-        // Данные для 1 бенчмарка
+        // Данные для SortingСhoiceBenchmark
         Random random = new Random();
         _sortingСhoice = new double[10000];
         for (int i = 0; i < 10000; i++)
@@ -71,7 +71,7 @@ public class SortingCollectionBenchmark
             _sortingСhoice[i] = random.NextDouble();
         }
         
-        // Данные для 2 бенчмарка
+        // Данные для QuickSortingBenchmark
         _quickSorting = new double[10000];
         for (int i = 0; i < 10000; i++)
         {
