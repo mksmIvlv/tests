@@ -1,5 +1,5 @@
 ﻿using BenchmarkDotNet.Running;
-using ProjectBenchmark;
+using ProjectBenchmark.Benchmarks;
 
 BenchmarkRunner.Run<DecisionKataBenchmark>();
 Console.ReadKey();

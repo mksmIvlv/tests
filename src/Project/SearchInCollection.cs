@@ -140,7 +140,7 @@ public class SearchInCollection
     {
         // Перменная для вывода
         int numbersReturn = -1;
-        
+
         // Временная переменная для записи значения и дальнейшего сравнения
         int tempNumbers = 0;
 
@@ -150,10 +150,12 @@ public class SearchInCollection
             {
                 // Записали данные
                 tempNumbers = report[i][j];
+                
                 for (int e = 0; e < report.Length; e++)
                 {
                     for (int q = 0; q < report[e].Length; q++)
                     {
+                        // Данное число равно, но оно не должно сравниваться с самим собой
                         if (tempNumbers == report[e][q] && i != e && j != q)
                         {
                             numbersReturn = tempNumbers;

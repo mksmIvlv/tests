@@ -1,8 +1,11 @@
 ﻿using BenchmarkDotNet.Attributes;
 using Project;
 
-namespace ProjectBenchmark;
+namespace ProjectBenchmark.Benchmarks;
 
+/// <summary>
+/// Класс для бенчмарка "SortingCollection"
+/// </summary>
 public class SortingCollectionBenchmark
 {
     #region Поля

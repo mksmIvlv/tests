@@ -1,8 +1,11 @@
 ﻿using BenchmarkDotNet.Attributes;
 using Project;
 
-namespace ProjectBenchmark;
+namespace ProjectBenchmark.Benchmarks;
 
+/// <summary>
+/// Класс для бенчмарка "DecisionKata"
+/// </summary>
 public class DecisionKataBenchmark
 {
     #region Поля
